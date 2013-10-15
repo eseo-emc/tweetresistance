@@ -3,8 +3,7 @@ from datetime import datetime
 
 
 class TwitpicClient(object):
-    def __init__(self,screenName='SjoerdOptLand'):
-#        SjoerdOptLand.5941@twitpic.com
+    def __init__(self):
         self.api = twitter.Api(consumer_key='<your key here>',
                       consumer_secret='<your secret here>',
                       access_token_key='<your access key here>',
