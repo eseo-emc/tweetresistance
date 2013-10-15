@@ -4,12 +4,13 @@ from datetime import datetime
 
 class TwitpicClient(object):
     def __init__(self):
-        self.api = twitter.Api(consumer_key='<your key here>',
-                      consumer_secret='<your secret here>',
-                      access_token_key='<your access key here>',
-                      access_token_secret='<your access secret here>')
+#        SjoerdOptLand.5941@twitpic.com
+        self.api = twitter.Api(consumer_key='Z0zCm7psyCrIXlSgg4oLw',
+                      consumer_secret='97djGNT5mJ0Qx4XXtbZNAx3TaWGtyKB5jV7wzTE',
+                      access_token_key='1962326917-Bfrm5ZP60TrZSrf4PF9i7oHqqRxiELoomTLz49l',
+                      access_token_secret='BeyZdsYYh0MeBluNYlE2RfihjQnyJqv4SLmlAWonLs')
                       
-        self.user = self.api.GetUser(screen_name='<your screen name here>')
+        self.user = self.api.GetUser(screen_name='DreojsSjoerd')
 
   
     def lastTweet(self):
