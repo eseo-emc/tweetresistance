@@ -127,6 +127,6 @@ class PatchImage(list):
     
 if __name__ == '__main__':
     from twitpic import TwitpicClient
-    imageUrl = TwitpicClient().getLastTweet().photoUrl
+    imageUrl = TwitpicClient().getLastTweet().photoUrl()
     scannedImage = PatchImage(imageUrl)
     scannedImage.show()
