@@ -5,12 +5,12 @@ from datetime import datetime
 class TwitpicClient(object):
     def __init__(self):
 #        SjoerdOptLand.5941@twitpic.com
-        self.api = twitter.Api(consumer_key='Z0zCm7psyCrIXlSgg4oLw',
-                      consumer_secret='97djGNT5mJ0Qx4XXtbZNAx3TaWGtyKB5jV7wzTE',
-                      access_token_key='1962326917-Bfrm5ZP60TrZSrf4PF9i7oHqqRxiELoomTLz49l',
-                      access_token_secret='BeyZdsYYh0MeBluNYlE2RfihjQnyJqv4SLmlAWonLs')
+        self.api = twitter.Api(consumer_key='42wttE14N2RoLomzYOL5ILx0d',
+                      consumer_secret='uJm3ZwheGrPU6RDxZADeJF8VQQHCFK3TCgNslJF5066PqA7jO5',
+                      access_token_key='2443815272-j85ikskshZzB7fbhZAVYSZFhP5GYJ2KMIzo6QS8',
+                      access_token_secret='9MkXOaKiJkiSojg2jeYTPmeUlltJhBkCZpkVxZVGSwC5F')
                       
-        self.user = self.api.GetUser(screen_name='DreojsSjoerd')
+        self.user = self.api.GetUser(screen_name='SjoerdOptLand')
 
   
     def lastTweet(self):
@@ -42,15 +42,17 @@ class PhotoTweet(object):
         return self.status.media[0][u'media_url']
     def createdAt(self):
         return datetime.fromtimestamp(self.status.created_at_in_seconds)
+    def rawText(self):
+        return self.status.GetText()
     def text(self):
-        return ''.join(self.status.GetText().split(' ')[:-1])
+        return ''.join(self.rawText().split(' ')[:-1])
     def __str__(self):
         return self.text() + ' (' + self.photoUrl() + ')'
 
 if __name__ == '__main__':
     client = TwitpicClient()
     tweet = client.lastTweet()
-    print tweet
+    print tweet.rawText()
     
 #    start = client.now()
 #    client.tweetsSince(start)
