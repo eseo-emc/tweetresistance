@@ -45,7 +45,7 @@ class PhotoTweet(object):
     def rawText(self):
         return self.status.GetText()
     def text(self):
-        return ''.join(self.rawText().split(' ')[:-1])
+        return ' '.join(self.rawText().split(' ')[:-1])
     def __str__(self):
         return self.text() + ' (' + self.photoUrl() + ')'
 
