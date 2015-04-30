@@ -16,7 +16,7 @@ for tweet in twitterClient.tweetsSince(gameStart):
     code = colorcode.ColorCode(tweet.photoUrl())
     totalValue = code.totalValue()
     
-    print '* {text}: {value:.1e} ({numberResistors} patches)'.format(text=tweet.text(), value=totalValue, numberResistors=len(code))
+    print '* {text}: {value:.1e} ({code})'.format(text=tweet.text(), value=totalValue, code=code)
     
     difference = abs(totalValue-targetTotalValue)
     if difference < winnerDifference:

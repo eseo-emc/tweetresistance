@@ -21,7 +21,7 @@ def hsvToChromaticity(hue,saturation=1.0,value=1.0):
     return color.rgb2lab(rgbVector)[:,:,1:]
     
 colorNames = ['red','orange','yellow','green','blue', 'purple']
-colorRgbs = hsvToChromaticity(np.array([0.0, 30.0, 60.0, 120.0, 240.0, 300.0])  /360.0)
+colorLabs = hsvToChromaticity(np.array([0.0, 30.0, 60.0, 120.0, 240.0, 300.0])  /360.0)
 colorValues = [2,3,4,5,6,7]
 
 class Color(object):
@@ -31,7 +31,7 @@ class Color(object):
         self.chromaticity = color.rgb2lab(np.array([[rgbValue]]))[:,:,1:]
     
     def _findColorId(self):
-        squaredDifferences = (colorRgbs-self.chromaticity)[0,:,0]**2 + (colorRgbs-self.chromaticity)[0,:,1]**2
+        squaredDifferences = (colorLabs-self.chromaticity)[0,:,0]**2 + (colorLabs-self.chromaticity)[0,:,1]**2
         return np.argmin(squaredDifferences)
         
     @property
