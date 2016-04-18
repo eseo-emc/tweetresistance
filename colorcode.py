@@ -5,9 +5,7 @@ import numpy as np
 class ColorCode(patchimage.PatchImage):
     def resistors(self):
         if len(self) % 3 > 0:
-            raise ValueError, 'Did not recognize multiple of 3 patches'
-#        for patch in self:
-#            print patch.averageColor.name, patch.averageColor.value
+            raise ValueError, 'Did not recognize multiple of 3 patches, but {0}'.format([patch.averageColor.name for patch in self])
         resistorValues = []
         colorNames = []
         for (decimalOne,decimalTwo,exponent) in zip(self[0::3],self[1::3],self[2::3]):

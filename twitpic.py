@@ -4,11 +4,10 @@ from datetime import datetime
 
 class TwitpicClient(object):
     def __init__(self):
-#        SjoerdOptLand.5941@twitpic.com
-        self.api = twitter.Api(consumer_key='QxilFASaWBzvu0Nv00ku8i5bg',
-                      consumer_secret='ERrof3uzwNVqZQYepiijvLsX3ILIjC2RCPkdzHkgFywQwSxPif',
-                      access_token_key='3223538032-uv5y8sUdMUwnbCgyuEE7tbkGcMmLoVv1FUcFjsq',
-                      access_token_secret='LPPkb6L43SLDwK4LaJQZrFycoKIEbzcVK9uQYbkAGXVtf')
+        self.api = twitter.Api(consumer_key='zejoKxmd6rFVKE3UNyxIUFvJR',
+                      consumer_secret='xCh6Ad08Ni91T4fvjYUj3sj8OW8buWH2kAp4t3sooKRNZcj1cu',
+                      access_token_key='3223538032-39HR7hZGURNqS4vPuxD5Cv7p5px611u8rmEDnjU',
+                      access_token_secret='acbHQsemLRIaEFNGBpPhAk0zFkIHyiSxFUlWHbROZoeaZ')
                       
         self.user = self.api.GetUser(screen_name='SjoerdEMC')
 
@@ -39,9 +38,9 @@ class PhotoTweet(object):
     def __init__(self,status):
         self.status = status
     def photoUrl(self):                
-        return self.status.media[0][u'media_url']
+        return self.status.media[0].media_url
     def createdAt(self):
-        return datetime.fromtimestamp(self.status.CreatedAtInSeconds)
+        return datetime.fromtimestamp(self.status.created_at_in_seconds)
     def rawText(self):
         return self.status.text
     def text(self):

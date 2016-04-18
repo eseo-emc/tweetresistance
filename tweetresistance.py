@@ -1,6 +1,7 @@
 import colorcode
 import twitpic
 import random
+import datetime
 
 twitterClient = twitpic.TwitpicClient()
 
@@ -12,16 +13,20 @@ raw_input('Press any key to stop the game...')
 
 winner = 'nobody'
 winnerDifference = 1000000000000
-for tweet in twitterClient.tweetsSince(gameStart):
-    code = colorcode.ColorCode(tweet.photoUrl())
-    totalValue = code.totalValue()
-    
-    print '* {text}: {value:.1e} ({code})'.format(text=tweet.text(), value=totalValue, code=code)
-    
-    difference = abs(totalValue-targetTotalValue)
-    if difference < winnerDifference:
-        winner = tweet.text()
-        winnerDifference = difference
+for tweet in twitterClient.tweetsSince(datetime.datetime(2016, 4, 18, 14, 35, 28)): #gameStart):
+    try:    
+        code = colorcode.ColorCode(tweet.photoUrl())
+        totalValue = code.totalValue()
+    except ValueError as error:
+        print 'Error for {name}: {error}'.format(name=tweet.text(), error=error)
+    else:
+
+        print '* {text}: {value:.1e} ({code})'.format(text=tweet.text(), value=totalValue, code=code)
+        
+        difference = abs(totalValue-targetTotalValue)
+        if difference < winnerDifference:
+            winner = tweet.text()
+            winnerDifference = difference
         
 print 'The winner is',winner
         
